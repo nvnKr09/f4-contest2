@@ -100,7 +100,6 @@ form label{
 @media screen and (max-width: 426px) {
     .form{
         Width:80%;
-        Height: 438px;
     }
     .form>h1{
         font-size: 20px;
