@@ -28,19 +28,12 @@ const SignIn = ({ setUserDetails }) => {
 
       const data = await response.json();
       console.log(data);
+      console.log("Status", response.status);
       
-
       if (response.ok) {
-        const userData = {
-            id: data.id,
-            name: data.firstName + " " + data.lastName,
-            username: data.email,
-            token: data.token
-        };
-      console.log(userData);
 
-        setUserDetails(userData)
-        localStorage.setItem('user', JSON.stringify(userData));
+        setUserDetails(data);
+        localStorage.setItem('user Data', JSON.stringify(data));
 
         // Clear the form and message
         setUser({ username: '', password: '' });
@@ -49,12 +42,12 @@ const SignIn = ({ setUserDetails }) => {
       } else {
         console.log('Login failed:', data.message);
         // Handle login error (show error to the user)
-        setMessage('Invalid username or password');
+        setMessage(data.message);
       }
     } catch (error) {
       console.log('Login failed:', error.data.message);
       // Handle other errors
-      setMessage('Something went wrong');
+      setMessage(error.data.message);
     }
   };
 
@@ -89,7 +82,7 @@ const SignIn = ({ setUserDetails }) => {
             Forget your password?
         </div>
       </div>
-      <div className="signup-text">
+      <div className="signin-text">
         <p>Don’t have an account? <span>Sign up</span></p>
       </div>
     </div>

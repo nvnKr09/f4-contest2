@@ -6,7 +6,7 @@ const Profile = ({userDetails,setUserDetails}) => {
 
     useEffect(() => {
         // Fetch user details from local storage when the component mounts
-        const storedUser = JSON.parse(localStorage.getItem("user"));
+        const storedUser = JSON.parse(localStorage.getItem('user Data'));
         if (storedUser) {
           setUserDetails(storedUser);
         }
@@ -14,14 +14,14 @@ const Profile = ({userDetails,setUserDetails}) => {
 
     const handleLogout = () => {
         // Clear user data from local storage on logout
-        localStorage.removeItem('user');
+        localStorage.removeItem('user Data');
         window.location.href = '/';
       };
 
   return (
     <div className="main">
       <div className="design">
-        <div className="line"></div>
+        <div className="triangle-design"></div>
       </div>
       <h1>Signup Successful!</h1>
       <div className="form">
@@ -29,8 +29,8 @@ const Profile = ({userDetails,setUserDetails}) => {
         <img src={ProfileSVG} alt="Profile Image" />
         <div className="details">
           <p>User ID: {userDetails.id}</p>
-          <p>Full Name: {userDetails.name}</p>
-          <p>Email: {userDetails.username}</p>
+          <p>Full Name: {userDetails.firstName + " " + userDetails.lastName}</p>
+          <p>Email: {userDetails.email}</p>
         </div>
         <button className="logout-button" onClick={handleLogout}>LOGOUT</button>
       </div>

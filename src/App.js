@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      {localStorage.getItem('user') ? (
+      {localStorage.getItem('user Data') ? (
         <Profile userDetails={userDetails} setUserDetails={setUserDetails} />
       ) : (
         <SignIn setUserDetails={setUserDetails} />
